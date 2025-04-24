@@ -1,0 +1,35 @@
+[
+    {
+        "title": "Gestión de Eventos",
+        "description": "Crea y organiza tus eventos de manera eficiente con nuestro sistema de gestión intuitivo.",
+        "icon": "🗓️"
+    },
+    {
+        "title": "Control de Participantes",
+        "description": "Registra y administra fácilmente la lista de participantes para cada uno de tus eventos.",
+        "icon": "👥"
+    },
+    {
+        "title": "Información Detallada",
+        "description": "Almacena toda la información relevante sobre tus eventos en un solo lugar, fácil de acceder.",
+        "icon": "📋"
+    },
+    {
+        "title": "Ubicaciones",
+        "description":
+          "Gestiona múltiples ubicaciones para tus eventos y proporciona información clara sobre cómo llegar para los asistentes.",
+        "icon": "📍"
+      },
+      {
+        "title": "Estadísticas Avanzadas",
+        "description":
+          "Accede a informes detallados y estadísticas sobre la asistencia, participación y éxito de tus eventos.",
+        "icon": "📊"
+      },
+      {
+        "title": "Notificaciones",
+        "description":
+          "Mantén informados a los participantes con notificaciones automáticas sobre cambios o recordatorios de eventos.",
+        "icon": "🔔"
+      }
+]

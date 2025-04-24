@@ -22,13 +22,13 @@ export default function AuthButtons() {
         <div className="flex ">
             <Link
                 href="/sign-in"
-                className="bg-[#2d957e] text-sm text-white hover:bg-[#e8da89] hover:text-[#2d957e] py-2 px-4 rounded-md transition-colors"
+                className="bg-[#2d957e] text-sm text-white hover:bg-[#e8da89] hover:text-[#2d957e] py-2 px-3 rounded-md transition-colors font-semibold"
             >
                 Iniciar sesión
             </Link>
             <Link
                 href="/sign-up"
-                className="bg-[#2d957e] text-sm text-white hover:bg-[#e8da89] hover:text-[#2d957e] py-2 px-4 rounded-md transition-colors"
+                className="bg-[#2d957e] text-sm text-white hover:bg-[#e8da89] hover:text-[#2d957e] py-2 px-3 rounded-md transition-colors font-semibold"
             >
                 Registrarse
             </Link>

@@ -16,7 +16,14 @@ Obtén tus claves (Publishable Key y Secret Key) y ponerlas en el .env.local
 ## Convex
 
 ``pnpm add convex``
-``pnpm convex dev``
+``pnpm dlx convex dev``
+
+<!-- ## Iconos
+``pnpm add react-icons`` -->
+
+## Instalar Shadcn
+``pnpm dlx shadcn@latest add sheet``
+
 
 # Para ver si hay algún error: 
 ``pnpm run lint``
