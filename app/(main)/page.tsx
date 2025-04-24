@@ -1,99 +1,178 @@
-// app/page.tsx
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center p-4 md:p-8 bg-gray-50">
-      <div className="w-full max-w-6xl">
-        <section
-          className="relative h-[60vh] rounded-xl overflow-hidden mb-12 flex items-center justify-center text-center"
-          style={{
-            backgroundImage: 'url("/evento-login.png")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/25"></div>
-          <div className="absolute inset-0 bg-opacity-60" />
-          <div className="relative z-10 text-[#F5F3EB] px-6">
-            <h1 className="text-3xl font-bold text-white px-2 py-2 rounded-md inline-block">
-            Eventos Limón
-            </h1>
-            <p className="text-base text-3xl  px-1 py-1 my-3 rounded-md md:text-lg max-w-2xl mx-auto mb-6">
-              Tu plataforma para crear y gestionar eventos de manera sencilla
-            </p>
-            <a
-              href="/eventos"
-              className="inline-block font-semibold bg-[#e8da89] hover:bg-[#2d957e] text-[#2d957e] hover:text-white py-2 px-6 rounded-lg transition-all text-sm shadow-md"
-            >
-              Eventos
-            </a>
-          </div>
-        </section>
+import { getInfoFeatures } from "@/lib/info";
+import { InfoItem } from "@/types/info";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { CalendarDays, Users, ClipboardList, MapPin, Clock, Star } from "lucide-react";
+import Link from "next/link";
 
-        {/* Características */}
-        <section className="py-8 md:py-12">
-          <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Características</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white p-5 rounded-lg shadow hover:shadow-lg transition-shadow text-sm"
-              >
-                <div className="text-[#2d957e] mb-3">{feature.icon}</div>
-                <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+// import UpcomingEvents from "@/components/events/upcoming-events";
+import { getInfoTestimonios } from "@/lib/testimonios";
+import { Testimonio } from "@/types/testimonio";
+import EventosInfo from "@/components/events/eventos_info";
+
+export default async function Home() {
+  const features: InfoItem[] = await getInfoFeatures();
+  const testimonios: Testimonio[] = await getInfoTestimonios();
+
+  return (
+    <main className="flex flex-col items-center bg-gray-50">
+      {/* Hero Section - Mejorado con overlay gradiente */}
+      <section
+        className="relative w-full h-[80vh] flex items-center justify-center"
+        style={{
+          backgroundImage: 'url("/evento-login.png")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30"></div>
+        <div className="container relative z-10 px-4 md:px-6 flex flex-col items-center text-center">
+          <p className="mb-4 text-gray-200">Tu plataforma de eventos</p>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            Eventos Limón
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto mb-8">
+            Tu plataforma para crear y gestionar eventos de manera sencilla e intuitiva
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#e8da89] hover:bg-[#2d957e] text-[#2d957e] hover:text-[#e8da89] font-medium"
+            >
+              <Link href="/eventos">
+                Ver Eventos
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#2d957e] hover:bg-[#e8da89] text-[#e8da89] hover:text-[#2d957e] font-medium"
+            >
+              <Link href="/crear-evento">
+                Crear Evento
+              </Link>
+            </Button>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Características */}
+      <section className="container py-16 md:py-24">
+        <div className="text-center mb-12">
+          <Badge className="mb-3 bg-[#e8da89] text-[#2d957e] hover:bg-[#e8da89]/90">Lo que ofrecemos</Badge>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Características Principales</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Nuestra plataforma está diseñada para facilitar la creación y gestión de eventos con herramientas intuitivas y potentes
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-all">
+              <CardHeader className="pb-2">
+                <div className="w-12 h-12 rounded-lg bg-[#e8da89]/20 flex items-center justify-center text-[#2d957e] mb-4">
+                  {feature.icon}
+                </div>
+                <CardTitle className="text-xl font-bold">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">{feature.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="w-full bg-[#2d957e] py-16">
+        <div className="container text-center mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Empieza a crear tus eventos hoy mismo
+          </h2>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
+            Únete a miles de organizadores que confían en Eventos Limón para gestionar sus eventos
+          </p>
+          <Button
+            asChild
+            size="lg"
+            className="bg-[#e8da89] hover:bg-white text-[#2d957e] font-medium"
+          >
+            <Link href="/registro">
+              Registrarse Gratis
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Información de eventos */}
+      <section className="w-full bg-gradient-to-b from-white to-gray-100 py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <Badge className="mb-3 bg-[#e8da89] text-[#2d957e] hover:bg-[#e8da89]/90">Explora</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Próximos Eventos</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Descubre los eventos más destacados que se acercan y no te pierdas la oportunidad de participar
+            </p>
+          </div>
+
+          <div className="mt-10 text-center">
+            <Button
+              asChild
+              variant="default"
+              className="bg-[#2d957e] hover:bg-[#2d957e]/90 text-white"
+            >
+              <Link href="/eventos">
+                Ver todos los eventos
+              </Link>
+            </Button>
+          </div>
+
+          <EventosInfo />
+
+        </div>
+      </section>
+
+      {/* Testimonios */}
+      <section className="container py-16 md:py-24">
+        <div className="text-center mb-12">
+          <Badge className="mb-3 bg-[#e8da89] text-[#2d957e] hover:bg-[#e8da89]/90 ">Testimonios</Badge>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Lo que dicen nuestros usuarios</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Experiencias de organizadores y participantes que han utilizado nuestra plataforma
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonios.map((testimonial, index) => (
+            <Card key={index} className="bg-white border border-gray-100">
+              <CardContent className="pt-6">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`w-4 h-4 ${i < testimonial.rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}`}
+                    />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-6 italic">"{testimonial.comment}"</p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-gray-200 rounded-full mr-3 flex items-center justify-center">
+                    <span className="text-gray-700 font-medium">{testimonial.name.charAt(0)}</span>
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-800">{testimonial.name}</p>
+                    <p className="text-sm text-gray-500">{testimonial.role}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      
+
     </main>
   );
 }
-
-const features = [
-  {
-    title: 'Gestión de Eventos',
-    description:
-      'Crea y organiza tus eventos de manera eficiente con nuestro sistema de gestión intuitivo.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-        ></path>
-      </svg>
-    ),
-  },
-  {
-    title: 'Control de Participantes',
-    description:
-      'Registra y administra fácilmente la lista de participantes para cada uno de tus eventos.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-        ></path>
-      </svg>
-    ),
-  },
-  {
-    title: 'Información Detallada',
-    description:
-      'Almacena toda la información relevante sobre tus eventos en un solo lugar, fácil de acceder.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-        ></path>
-      </svg>
-    ),
-  },
-];

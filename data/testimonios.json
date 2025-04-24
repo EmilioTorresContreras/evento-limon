@@ -1,0 +1,20 @@
+[
+    {
+        "name": "María González",
+        "role": "Organizadora de eventos corporativos",
+        "comment": "Eventos Limón ha simplificado completamente la forma en que organizo mis eventos. La interfaz es intuitiva y las herramientas son exactamente lo que necesitaba.",
+        "rating": 5
+    },
+    {
+        "name": "Carlos Rodríguez",
+        "role": "Coordinador de conferencias",
+        "comment": "La gestión de participantes y la emisión de boletos es tan sencilla. He ahorrado horas de trabajo administrativo gracias a esta plataforma.",
+        "rating": 4
+    },
+    {
+        "name": "Laura Martínez",
+        "role": "Organizadora de festivales",
+        "comment": "Lo que más me gusta es la facilidad para personalizar cada evento según mis necesidades específicas. Definitivamente recomendaría Eventos Limón.",
+        "rating": 5
+    }
+]

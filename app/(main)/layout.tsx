@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar'; // Ajusta la ruta
 
 export default function MainLayout({
@@ -9,6 +10,7 @@ export default function MainLayout({
     <div className="min-h-screen">
       <Navbar /> 
       {children}
+      <Footer/>
     </div>
   );
 }
